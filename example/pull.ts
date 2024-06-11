@@ -1,5 +1,5 @@
-import { GoogleSheetLanguagesModel } from "google-sheet-languages-model";
-import { SHEET_ID, languages, auth, folderPath } from "./config.ts";
+import { GoogleSheetLanguagesModel } from "google-sheet-languages-model-2";
+import { SHEET_ID, SHEET_TAB_NAME, languages, auth, folderPath } from "./config.ts";
 
 const googleSheetLanguagesModel = new GoogleSheetLanguagesModel({
   sheetId: SHEET_ID,
@@ -7,7 +7,7 @@ const googleSheetLanguagesModel = new GoogleSheetLanguagesModel({
 });
 
 const languagesModel = await googleSheetLanguagesModel.loadFromGoogleSheet(
-  "Test",
+  SHEET_TAB_NAME,
   languages
 );
 

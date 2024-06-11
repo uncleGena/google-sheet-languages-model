@@ -2,6 +2,8 @@
 /example/
 rollup.config.mjs
 .env
+.env.example
 env
+credentials.json
 *.log
 tsconfig*

@@ -10,6 +10,7 @@ const require = createRequire(import.meta.url);
 const credentials = require("./credentials.json");
 
 export const SHEET_ID = process.env.SHEET_ID as string;
+export const SHEET_TAB_NAME = process.env.SHEET_TAB_NAME as string;
 
 export const languages = ["en", "zh", "ja", "fr", "es"] as const;
 
