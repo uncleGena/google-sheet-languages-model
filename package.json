@@ -1,6 +1,6 @@
 {
   "name": "google-sheet-languages-model-2",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "main": "dist/index.js",
   "repository": "https://github.com/uncleGena/google-sheet-languages-model",
   "author": "neil585456525 <neil585456525@gmail.com>",
