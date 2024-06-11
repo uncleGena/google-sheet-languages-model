@@ -2,14 +2,14 @@
 
 # Google Sheet Languages Model - i18n google sheet layer
 
-`google-sheet-languages-model` is a npm package that allows you to download/upload and parse internationalization (i18n) data between a Google Sheet and your local environment. This readme provides instructions on how to set up and use the `google-sheet-languages-model` package to manage your i18n data.
+`google-sheet-languages-model-2` is a npm package that allows you to download/upload and parse internationalization (i18n) data between a Google Sheet and your local environment. This readme provides instructions on how to set up and use the `google-sheet-languages-model-2` package to manage your i18n data.
 
 ## Installation
 
 Install the package using npm:
 
 ```bash
-yarn add -D google-sheet-languages-model googleapis
+yarn add -D google-sheet-languages-model-2 googleapis
 ```
 
 ## Authorization
@@ -27,7 +27,7 @@ It's recommended to use the [Service Account](https://developers.google.com/work
 Firstly, import the necessary modules from the package and your configuration:
 
 ```typescript
-import { GoogleSheetLanguagesModel } from "google-sheet-languages-model";
+import { GoogleSheetLanguagesModel } from "google-sheet-languages-model-2";
 import { SHEET_ID, languages, auth, folderPath } from "./config.ts";
 ```
 
@@ -89,11 +89,11 @@ Your `config.ts` should export the following variables:
 
 The main classes and methods are documented in the source code provided. This will guide you on the data structures and the methods available for use.
 
-Feel free to explore the provided code to better understand how to work with the `google-sheet-languages-model` package to manage your i18n data.
+Feel free to explore the provided code to better understand how to work with the `google-sheet-languages-model-2` package to manage your i18n data.
 
 ## Data Structures for i18n File Data
 
-The `google-sheet-languages-model` package supports two different structures to describe i18n file data: `nest` (JS object style) and `flat` (key annotation style). Both styles serve to organize your internationalization data in a manner that best suits your project's needs.
+The `google-sheet-languages-model-2` package supports two different structures to describe i18n file data: `nest` (JS object style) and `flat` (key annotation style). Both styles serve to organize your internationalization data in a manner that best suits your project's needs.
 
 ### 1. Nest (JS Object Style)
 
