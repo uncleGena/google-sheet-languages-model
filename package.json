@@ -2,7 +2,7 @@
   "name": "google-sheet-languages-model-2",
   "version": "0.2.2",
   "main": "dist/index.js",
-  "repository": "https://github.com/neil585456525/i18n-google-sheet-example.git",
+  "repository": "https://github.com/uncleGena/i18n-google-sheet-example.git",
   "author": "neil585456525 <neil585456525@gmail.com>",
   "type": "module",
   "license": "MIT",

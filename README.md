@@ -82,8 +82,8 @@ Your `config.ts` should export the following variables:
 
 ### Examples
 
-- Pull i18n from google sheet to local folder. ([link](https://github.com/neil585456525/i18n-google-sheet-example/blob/main/example/pull.ts))
-- Push i18n from local folder to google sheet. ([link](https://github.com/neil585456525/i18n-google-sheet-example/blob/main/example/push.ts))
+- Pull i18n from google sheet to local folder. ([link](https://github.com/uncleGena/i18n-google-sheet-example-2/blob/main/example/pull.ts))
+- Push i18n from local folder to google sheet. ([link](https://github.com/uncleGena/i18n-google-sheet-example-2/blob/main/example/push.ts))
 
 ## Documentation
 
