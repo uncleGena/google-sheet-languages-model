@@ -17,7 +17,8 @@
     "test": "vitest",
     "build": "rollup --config",
     "i18n:pull": "tsx example/pull.ts",
-    "i18n:push": "tsx example/push.ts"
+    "i18n:push": "tsx example/push.ts",
+    "release": "release-it"
   },
   "dependencies": {
     "googleapis": "^126.0.1",
@@ -28,7 +29,7 @@
     "@types/lodash-es": "^4.17.9",
     "@types/node": "^20.5.9",
     "dotenv": "^16.3.1",
-    "google-sheet-languages-model-2": "^0.0.2",
+    "release-it": "^17.3.0",
     "rollup": "^3.29.0",
     "rollup-plugin-delete": "^2.0.0",
     "ts-node": "^10.9.1",
