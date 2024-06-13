@@ -29,10 +29,10 @@ describe("LanguagesModel", () => {
   });
 
   test("load languages from local folder and create the right model", () => {
-    const languagesModel = LanguagesModel.loadFromFolder(
-      resolve(__dirname + "/i18n"),
+    const languagesModel = LanguagesModel.loadFromFolder({
+      folderPath: resolve(__dirname + "/i18n"),
       languages
-    );
+    });
 
     expectLanguagesModel(languagesModel);
   });
@@ -45,13 +45,42 @@ describe("LanguagesModel", () => {
 
     const folderPath = resolve(__dirname + "/tmp/nestI18n");
 
-    languagesModel.saveToFolder(folderPath, "nest");
+    languagesModel.saveToFolder({ folderPath, type: "nest"});
 
-    const languagesModel2 = LanguagesModel.loadFromFolder(
+    const languagesModel2 = LanguagesModel.loadFromFolder({
       folderPath,
       languages
-    );
+    });
 
     expectLanguagesModel(languagesModel2);
+  });
+
+  test("save languages to local folder without omitted", async () => {
+    const folderPath = resolve(__dirname + "/tmp/nestI18n")
+
+    // 1) save normal data
+    const languagesModel = new LanguagesModel({
+      languages,
+      languagesContent: flatLanguagesContentExample,
+    });
+    languagesModel.saveToFolder({ folderPath, type: "nest" });
+
+    // 2) try to overwrite it with another data
+    const newData = JSON.parse(JSON.stringify({ 
+      ...flatLanguagesContentExample,
+      ...{ en: { name: 'New Name' }}
+    }))
+    const languagesModel2 = new LanguagesModel({
+      languages,
+      languagesContent: newData,
+    });
+    languagesModel2.saveToFolder({ folderPath, type: "nest", omitLangs: ['en'] });
+
+    const languagesModel3 = LanguagesModel.loadFromFolder({
+      folderPath,
+      languages,
+    });
+
+    expectLanguagesModel(languagesModel3);
   });
 });

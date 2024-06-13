@@ -23,10 +23,19 @@ export class GoogleSheetLanguagesModel {
     this.googleSheet = google.sheets({ version: "v4", auth: config.auth });
   }
 
-  public async loadFromGoogleSheet(sheetTitle: string, languages: Languages) {
+  public async loadFromGoogleSheet({
+    sheetTitle,
+    languages,
+  }: {
+    sheetTitle: string, 
+    languages: Languages,
+  }) {
     const sheetValue = await this.getSheetValueFromGoogleSheet(sheetTitle);
 
-    return this.sheetValueToLanguageModel(sheetValue, languages);
+    return this.sheetValueToLanguageModel({
+      sheetValue, 
+      languages,
+    });
   }
 
   public async saveToGoogleSheet(
@@ -86,10 +95,13 @@ export class GoogleSheetLanguagesModel {
     return contentRaws;
   }
 
-  public sheetValueToLanguageModel(
+  public sheetValueToLanguageModel({
+    sheetValue,
+    languages,
+  }: {
     sheetValue: SheetValue,
-    languages: Languages
-  ) {
+    languages: Languages,
+  }) {
     const [_, ...contentRowsData] = sheetValue;
 
     const contentRows = contentRowsData.map((rowItem) => {

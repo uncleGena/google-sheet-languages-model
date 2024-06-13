@@ -1547,6 +1547,14 @@ google-auth-library@^9.0.0:
     jws "^4.0.0"
     lru-cache "^6.0.0"
 
+"google-sheet-languages-model-2@file:":
+  version "0.2.4"
+  resolved "file:"
+  dependencies:
+    google-sheet-languages-model-2 "file:"
+    googleapis "^126.0.1"
+    lodash-es "^4.17.21"
+
 googleapis-common@^7.0.0:
   version "7.0.0"
   resolved "https://registry.npmjs.org/googleapis-common/-/googleapis-common-7.0.0.tgz"

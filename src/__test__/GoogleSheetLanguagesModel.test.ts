@@ -22,10 +22,10 @@ describe("GoogleSheetLanguagesModel.test", () => {
       auth: {} as any,
     });
 
-    const languagesModel = googleSheetLanguagesModel.sheetValueToLanguageModel(
-      sheetValueExample,
+    const languagesModel = googleSheetLanguagesModel.sheetValueToLanguageModel({
+      sheetValue: sheetValueExample,
       languages
-    );
+    });
 
     expectLanguagesModel(languagesModel);
   });
@@ -59,13 +59,13 @@ describe("GoogleSheetLanguagesModel.test", () => {
 
     const args: Parameters<
       typeof googleSheetLanguagesModel.loadFromGoogleSheet
-    > = ["sheetTitle", languages];
+    > = [{ sheetTitle: "Sheet1", languages }];
 
     const languagesModel = await googleSheetLanguagesModel.loadFromGoogleSheet(
       ...args
     );
 
-    expect(spy).toHaveBeenCalledWith(args[0]);
+    expect(spy).toHaveBeenCalledWith(args[0].sheetTitle);
     expectLanguagesModel(languagesModel);
   });
 

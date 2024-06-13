@@ -1,4 +1,4 @@
-import { GoogleSheetLanguagesModel } from "google-sheet-languages-model-2";
+import { GoogleSheetLanguagesModel } from "../src/GoogleSheetLanguagesModel.ts";
 import { SHEET_ID, SHEET_TAB_NAME, languages, auth, folderPath } from "./config.ts";
 
 const googleSheetLanguagesModel = new GoogleSheetLanguagesModel({
@@ -6,11 +6,14 @@ const googleSheetLanguagesModel = new GoogleSheetLanguagesModel({
   auth,
 });
 
-const languagesModel = await googleSheetLanguagesModel.loadFromGoogleSheet(
-  SHEET_TAB_NAME,
-  languages
-);
+const languagesModel = await googleSheetLanguagesModel.loadFromGoogleSheet({
+  sheetTitle: SHEET_TAB_NAME,
+  languages,
+});
 
-languagesModel.saveToFolder(folderPath, "nest");
+languagesModel.saveToFolder({ 
+  folderPath, 
+  type: "nest", 
+});
 
 console.log("pull done");

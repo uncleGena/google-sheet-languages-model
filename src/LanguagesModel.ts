@@ -38,14 +38,18 @@ export interface LanguagesModelConfig<
  * Support two common structures of i18n files. Flat and nest.
  */
 export class LanguagesModel<TLanguages extends Languages = Languages> {
-  static loadFromFolder<TLanguages extends Languages>(
+  static loadFromFolder<TLanguages extends Languages>({
+    folderPath,
+    languages,
+  }: {
     folderPath: string,
     languages: TLanguages
-  ) {
+  }) {
     const languagesContent: LanguagesContent = {};
     languages.forEach((langItem) => {
       const langFilePath = `${folderPath}/${langItem}.json`;
       const langFile = require(langFilePath);
+      // console.log(langFilePath)
       languagesContent[langItem] = langFile;
     });
     return new LanguagesModel<TLanguages>({
@@ -70,11 +74,22 @@ export class LanguagesModel<TLanguages extends Languages = Languages> {
     return this.flatToNest(this.flatLanguagesContent);
   }
 
-  public saveToFolder(folderPath: string, type: LanguagesContentType = "nest") {
+  public saveToFolder({ 
+    folderPath,
+    type = 'nest',
+    omitLangs = [],
+  }: {
+    folderPath: string,
+    type: LanguagesContentType,
+    omitLangs?: Languages[number][]
+  }) {
     if (!fs.existsSync(folderPath)) {
       fs.mkdirSync(folderPath, { recursive: true });
     }
     this.languages.forEach((langItem) => {
+      // do not save to file, if must omit
+      if (omitLangs.includes(langItem)) return
+
       const langFilePath = `${folderPath}/${langItem}.json`;
       const model = type === "nest" ? this.getNest() : this.getFlat();
       fs.writeFileSync(langFilePath, JSON.stringify(model[langItem], null, 2));
